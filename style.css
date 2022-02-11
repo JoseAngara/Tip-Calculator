@@ -1,0 +1,225 @@
+:root {
+    --activeColor: hsl(172, 67%, 45%);
+    --hoverColor: hsl(172, 67%, 55%);
+    --primaryColor: hsl(183, 100%, 15%);
+    --background: hsl(185, 41%, 84%);
+    --textColorDarker: hsl(186, 14%, 43%);
+    --textColor: hsl(184, 14%, 56%);
+    --inputBackground: hsl(189, 41%, 97%);
+    --white: hsl(0, 0%, 100%);
+    --alert: #F04740;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background-color: var(--background);
+    font-family: 'Space Mono', monospace;
+}
+
+.logo {
+    display: block;
+    margin:  30px auto;
+}
+
+.container {
+    box-sizing: content-box;
+    margin: 0 auto;
+    display: grid;
+    gap: 20px;
+    background-color: var(--white);
+    padding: 30px;
+    max-width: 720px;
+    border-radius: 16px;
+    grid-template-columns: repeat(auto-fill, minmax(315px, 350px));
+    color: var(--textColorDarker);
+}
+
+input {
+    cursor: pointer;
+}
+
+label, legend {
+    display: block;
+    position: relative;
+    font-weight: 700;
+    margin: 5px 0;
+}
+
+label::after {
+    content: "";
+    position: absolute;
+    left: 20px;
+    bottom: -48px;
+}
+
+label[for="bill"]::after {
+    content: url("images/icon-dollar.svg");
+}
+
+label[for="peopleNumber"]::after {
+    content: url("images/icon-person.svg");
+}
+
+.input-number {
+    font-size: 24px;
+    font-family: 'Space Mono', monospace;
+    background-color: var(--inputBackground);
+    outline: none;
+    border: none;
+    color: var(--primaryColor);
+    caret-color: var(--activeColor);
+    font-weight: 700;
+    width: 100%;
+    padding: 8px;
+    text-align: right;
+    border-radius: 5px;
+    transition: outline 0.25s ease;
+}
+
+.input-number:focus, .input-number:hover {
+    outline: 2px solid var(--activeColor);
+}
+
+#bill::before {
+    content: url('images/icon-dollar.svg');
+    display: inline-flex;
+    height: 17px;
+    width: 11px;
+}
+
+.percent {
+    padding: 0;
+    margin: 30px 0;
+    border: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(3, 1fr);
+    gap: 10px;
+}
+
+input[type="radio"] {
+    margin: 0;
+    appearance: none;
+    width: 100%;
+    height: 56px;
+    border-radius: 5px;
+    background-color: var(--primaryColor);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.25s ease-in-out;
+}
+
+input[type="radio"]:hover {
+    background-color: var(--hoverColor);
+}
+
+input[type="radio"]::before {
+    font-family: 'Space Mono', monospace;
+    color: var(--white);
+    font-size: 24px;
+    font-weight: 700;
+    content: var(--percent);
+}
+
+input[type="radio"]:hover::before {
+    color: var(--primaryColor);
+}
+
+input[type="radio"]:checked {
+    background-color: var(--activeColor);
+    transition: background-color 0.25s ease-in-out;
+}
+
+input[type="radio"]:checked::before {
+    color: var(--primaryColor);
+    transition: color 0.25s ease-in-out;
+}
+
+.output {
+    background-color: var(--primaryColor);
+    border-radius: 16px;
+    width: 100%;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.output button {
+    background-color: var(--activeColor);
+    color: var(--primaryColor);
+    font-size: 16px;
+    font-weight: 700;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 0;
+    cursor: pointer;
+    transition: background-color 0.25s ease-in-out;
+}
+
+.output button:not([disabled]):hover{
+    background-color: var(--hoverColor);
+}
+
+.output button[disabled] {
+    opacity: 0.25;
+    cursor: default;
+}
+
+.value {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.value h1 {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    color: var(--white);
+    font-size: 16px;
+}
+
+.value h1::after {
+    content:"/ person";
+    font-size: 12px;
+    color: var(--textColor);
+}
+
+.value span {
+    font-size: 30px;
+    font-weight: 700;
+    color: var(--activeColor);
+}
+
+.error {
+    font-weight: 700;
+    color: var(--alert);
+    position: absolute;
+}
+
+.invalid-input {
+    outline: 2px solid var(--alert);
+}
+
+.invalid-input:focus {
+    outline: 2px solid var(--alert);
+}
